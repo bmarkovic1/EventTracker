@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:weightSum="1"
+    tools:context="com.example.boze.eventtracker.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/logo"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/app_name"
+        android:background="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_city"
+            android:id="@+id/toAllEventsInACity"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_weight="0.5"
+            android:textStyle="bold"
+            android:textSize="@dimen/button_text_size"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"
+            android:paddingTop="@dimen/padding_button_top_main"
+            android:paddingBottom="@dimen/padding_button_top_main"
+            android:includeFontPadding="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/participating_events"
+            android:id="@+id/EventsYouWantToParticipate"
+            android:layout_weight="0.5"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"
+            android:paddingTop="@dimen/padding_button_top_main"
+            android:paddingBottom="@dimen/padding_button_top_main"
+            android:includeFontPadding="true"/>
+
+    </LinearLayout>
+
+</LinearLayout>

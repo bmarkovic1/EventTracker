@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EventTracker</string>
+    <string name="tvAccelerationText">tvAcceleration</string>
+    <string name="tvAccPerComponentText">tvAccPerComponent</string>
+    <string name="cbTestCheckbox_text">ui tester</string>
+    <string name="bRunOnMainThread_text">main</string>
+    <string name="bRunOnBackThread_text">back</string>
+    <string name="tvLocationDefault">-</string>
+    <string name="events_city">all events</string>
+    <string name="participating_events">my events</string>
+</resources>
