@@ -20,17 +20,20 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Add_event"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".Maps"
             android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="com.google.android.gms.version"
-                android:value="@integer/google_play_services_version"/>
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyDc_xgYczm8kldheWa5TytDRV2W5A4Nc7k"/>
+
         </activity>
 
-
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDc_xgYczm8kldheWa5TytDRV2W5A4Nc7k"/>
     </application>
 
 </manifest>

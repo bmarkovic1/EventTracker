@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "119412964170",
+    "firebase_url": "https://eventtracker-e4516.firebaseio.com",
+    "project_id": "eventtracker-e4516",
+    "storage_bucket": "eventtracker-e4516.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119412964170:android:ad7f35d88d570448",
+        "android_client_info": {
+          "package_name": "com.example.boze.eventtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119412964170-nhoiqvou5jamlr6khb020h5s94eq2cla.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.boze.eventtracker",
+            "certificate_hash": "e3bb3a9b7a424ec1838a22c2aa5a5520b431e581"
+          }
+        },
+        {
+          "client_id": "119412964170-9dae0h508s532lcj1niigarg9h9oud7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEHsuWVwkSvD99psybGoVprJcb0qLIe-A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119412964170-9dae0h508s532lcj1niigarg9h9oud7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

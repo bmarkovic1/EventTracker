@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/light_grey"
     android:weightSum="1"
     tools:context="com.example.boze.eventtracker.MainActivity">
 
@@ -31,10 +31,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/events_city"
-            android:id="@+id/toAllEventsInACity"
+            android:text="@string/map"
+            android:id="@+id/map"
             android:layout_margin="@dimen/margin_small"
-            android:layout_weight="0.5"
+            android:layout_weight="0.33"
             android:textStyle="bold"
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorPrimaryDark"
@@ -46,9 +46,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/participating_events"
-            android:id="@+id/EventsYouWantToParticipate"
-            android:layout_weight="0.5"
+            android:text="@string/events"
+            android:id="@+id/events"
+            android:layout_weight="0.33"
             android:layout_margin="@dimen/margin_small"
             android:textSize="@dimen/button_text_size"
             android:textStyle="bold"
@@ -57,7 +57,20 @@
             android:paddingTop="@dimen/padding_button_top_main"
             android:paddingBottom="@dimen/padding_button_top_main"
             android:includeFontPadding="true"/>
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/events_list"
+            android:id="@+id/events_list"
+            android:layout_weight="0.33"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"
+            android:paddingTop="@dimen/padding_button_top_main"
+            android:paddingBottom="@dimen/padding_button_top_main"
+            android:includeFontPadding="true"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -6,6 +6,7 @@
     <string name="bRunOnMainThread_text">main</string>
     <string name="bRunOnBackThread_text">back</string>
     <string name="tvLocationDefault">-</string>
-    <string name="events_city">all events</string>
-    <string name="participating_events">my events</string>
+    <string name="map">MAP</string>
+    <string name="events">ADD EVENT</string>
+    <string name="events_list">LIST</string>
 </resources>

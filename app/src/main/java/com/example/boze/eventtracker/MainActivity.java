@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button allEvents, myEvents;
+    Button map, add, list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +19,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initClickListener() {
-        allEvents.setOnClickListener(new View.OnClickListener() {
+        map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Maps.class);
                 startActivity(intent);
             }
         });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Add_event.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setUpUI() {
-        allEvents=(Button)findViewById(R.id.toAllEventsInACity);
-        myEvents=(Button)findViewById(R.id.EventsYouWantToParticipate);
+        map=(Button)findViewById(R.id.map);
+        add=(Button)findViewById(R.id.events);
+        list=(Button)findViewById(R.id.events_list);
     }
 }
