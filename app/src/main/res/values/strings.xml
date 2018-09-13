@@ -3,10 +3,9 @@
     <string name="tvAccelerationText">tvAcceleration</string>
     <string name="tvAccPerComponentText">tvAccPerComponent</string>
     <string name="cbTestCheckbox_text">ui tester</string>
-    <string name="bRunOnMainThread_text">main</string>
-    <string name="bRunOnBackThread_text">back</string>
     <string name="tvLocationDefault">-</string>
     <string name="map">MAP</string>
     <string name="events">ADD EVENT</string>
     <string name="events_list">LIST</string>
+    <string name="add">add_new_event</string>
 </resources>
