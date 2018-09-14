@@ -15,7 +15,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,17 +27,20 @@ public class ListActivity extends AppCompatActivity {
     ListView EventList;
     EventAdapter eventAdapter;
     MapMarker marker;
+    ArrayList<Event> events = new ArrayList<>();
+    String Address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
-        setUpUI();
         readData();
 
     }
 
-    public void updateLocationText(MapMarker marker) {
+
+
+    public String updateLocationText(MapMarker marker) {
         if(Geocoder.isPresent()){
             Geocoder geocoder = new Geocoder(this, Locale.getDefault());
             try {
@@ -47,22 +53,57 @@ public class ListActivity extends AppCompatActivity {
                             .append(nearestAddress.getLocality()).append("\n")
                             .append(nearestAddress.getCountryName());
                     Log.d("TAG", "Value is: " + nearByAddresses);
-
+                    return nearestAddress.getAddressLine(0);
                 }
-            } catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "nepoznata adresa";
+                }
         }
+        return "nepoznata adresa";
     }
 
     private void readData() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Events");
+
+       /* myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                marker = dataSnapshot.getValue(MapMarker.class);
+
+                events.add(new Event("Festival",4434,marker, updateLocationText(marker)));
+                //loadEvent(marker, updateLocationText(marker) );
+                setUpUI();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
+
         myRef.addChildEventListener(new ChildEventListener() {
+
+
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 marker = dataSnapshot.getValue(MapMarker.class);
 
-                updateLocationText(marker);
+
+                //loadEvent(marker, updateLocationText(marker));
+
+                Date date = null;
+                try {
+                    date = getDate("2018-02-01");
+                } catch (ParseException e) {
+                    e.printStackTrace();
+
+                }
+
+                events.add(new Event("Policijska patrola",date,marker, updateLocationText(marker)));
                 Log.d("TAG", "Value is: " + marker.getLatitude());
+                setUpUI();
             }
 
             @Override
@@ -85,29 +126,29 @@ public class ListActivity extends AppCompatActivity {
                 Log.w("TAG", "Failed to read value.", databaseError.toException());
             }
         });
+
+    }
+
+    private Date getDate(String dateString) throws ParseException {
+
+
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = fmt.parse(dateString);
+        return date;
+
+
     }
 
     private void setUpUI() {
         this.EventList = (ListView) this.findViewById(R.id.event_list);
-        this.eventAdapter = new EventAdapter(this.loadEvents());
+        this.eventAdapter = new EventAdapter(this.loadEvent());
         this.EventList.setAdapter(this.eventAdapter);
 
     }
 
-    private ArrayList<Event> loadEvents() {
-        ArrayList<Event> events = new ArrayList<>();
-        MapMarker marker = new MapMarker(123,456,234);
-        events.add(new Event("Koncert",4434,marker));
-        events.add(new Event("Policijska patrola",4434, marker));
-        events.add(new Event("Akcijska cijena pića",4434, marker));
-        events.add(new Event("Festival",4434, marker));
-        events.add(new Event("A game of thrones",4434, marker));
-        events.add(new Event("A clash of kings",4434, marker));
-        events.add(new Event("A storm of swords",4434, marker));
-        events.add(new Event("A feast for crows",4434, marker));
-        events.add(new Event("A dance with dragons",4434, marker));
-        events.add(new Event("The winds of winter",34343, marker));
-        events.add(new Event("A dream of spring",343, marker));
+    private ArrayList<Event> loadEvent() {
+
+
         return events;
     }
 }

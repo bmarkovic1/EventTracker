@@ -7,5 +7,6 @@
     <string name="map">MAP</string>
     <string name="events">ADD EVENT</string>
     <string name="events_list">LIST</string>
-    <string name="add">add_new_event</string>
+    <string name="add">Add Event</string>
+    <string name="addLocationOnMap">PICK LOCATION</string>
 </resources>

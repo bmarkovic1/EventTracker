@@ -19,7 +19,7 @@
         android:textSize="@dimen/list_text_size"/>
     <TextView
         android:id="@+id/tvEventMarker"
-        android:layout_below="@id/tvEventType"
+        android:layout_below="@id/tvEventTime"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

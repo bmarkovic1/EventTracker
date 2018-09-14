@@ -36,10 +36,9 @@ public class EventAdapter extends BaseAdapter {
         Event event = this.Events.get(position);
         eventViewHolder.tvEventType.setText(event.getType());
         eventViewHolder.tvEventTime.setText(String.valueOf(event.getTime()));
-        eventViewHolder.tvEventMarker.setText(String.valueOf(event.getMarker().getLatitude())+ String.valueOf(event.getMarker().getLongitude()));
+        eventViewHolder.tvEventMarker.setText(event.getAddress());
         return convertView;
     }
-
 
     public static class ViewHolder {
         public TextView tvEventType, tvEventTime, tvEventMarker;
