@@ -3,7 +3,8 @@ package com.example.boze.eventtracker;
 
 public class MapMarker {
 
-    public double timestamp;
+    public String type;
+    public String time;
     public double latitude;
     public double longitude;
 
@@ -11,19 +12,12 @@ public class MapMarker {
     public MapMarker() {
     }
 
-    public MapMarker(double timestamp, double latitude, double longitude) {
+    public MapMarker(String type, String time, double latitude, double longitude) {
 
-        this.timestamp = timestamp;
+        this.type = type;
+        this.time = time;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public double getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(double timestamp) {
-        this.timestamp = timestamp;
     }
 
     public double getLongitude() {
@@ -36,6 +30,18 @@ public class MapMarker {
 
     public double getLatitude() {
         return latitude;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) { this.type = type; }
+
+    public String getTime() { return time; }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public void setLatitude(double latitude) {

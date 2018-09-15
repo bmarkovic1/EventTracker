@@ -1,21 +1,36 @@
 package com.example.boze.eventtracker;
 
-import java.util.Date;
-
 public class Event {
 
-    private String mType;
-    private Date mDate;
-    private MapMarker mMarker;
-    private String mAddress;
-    public Event(String type, Date date, MapMarker marker, String Address) {
-        mType = type;
-        mDate = date;
-        mMarker = marker;
-        mAddress = Address;
+    public String type;
+    public String time;
+    public double latitude;
+    public double longitude;
+
+    public String address;
+
+    public Event() {
     }
-    public String getType() { return mType; }
-    public Date getTime() { return mDate; }
-    public MapMarker getMarker() { return mMarker; }
-    public String getAddress() { return mAddress; }
+
+    public Event(String type, String time, double latitude, double longitude, String address) {
+        this.type = type;
+        this.time = time;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+    }
+
+
+
+    public String getType() { return type; }
+    public String getTime() { return time; }
+    public double getLatitude() { return latitude; }
+    public double getLongitude() { return longitude; }
+    public String getAddress() { return address; }
+
+    public void setType(String type) { this.type = type; }
+    public void setTime(String time) { this.time = time; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public void setAddress(String address) { this.address = address; }
 }

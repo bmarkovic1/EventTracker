@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,9 +17,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,17 +32,13 @@ public class ListActivity extends AppCompatActivity {
     EventAdapter eventAdapter;
     MapMarker marker;
     ArrayList<Event> events = new ArrayList<>();
-    String Address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
         readData();
-
     }
-
-
 
     public String updateLocationText(MapMarker marker) {
         if(Geocoder.isPresent()){
@@ -67,50 +67,19 @@ public class ListActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Events");
 
-       /* myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                marker = dataSnapshot.getValue(MapMarker.class);
-
-                events.add(new Event("Festival",4434,marker, updateLocationText(marker)));
-                //loadEvent(marker, updateLocationText(marker) );
-                setUpUI();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
-
         myRef.addChildEventListener(new ChildEventListener() {
-
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 marker = dataSnapshot.getValue(MapMarker.class);
-
-
-                //loadEvent(marker, updateLocationText(marker));
-
-                Date date = null;
-                try {
-                    date = getDate("2018-02-01");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-
-                }
-
-                events.add(new Event("Policijska patrola",date,marker, updateLocationText(marker)));
+                events.add(new Event(marker.getType(),marker.getTime(),marker.getLatitude(),marker.getLongitude(), updateLocationText(marker)));
                 Log.d("TAG", "Value is: " + marker.getLatitude());
+                Log.d("TAG", "Value is: " + marker.getType());
                 setUpUI();
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                MapMarker marker = dataSnapshot.getValue(MapMarker.class);
-
-                Log.d("TAG", "Value is: " + marker.getLatitude());
             }
 
             @Override
@@ -129,25 +98,13 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
-    private Date getDate(String dateString) throws ParseException {
-
-
-        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = fmt.parse(dateString);
-        return date;
-
-
-    }
-
     private void setUpUI() {
         this.EventList = (ListView) this.findViewById(R.id.event_list);
         this.eventAdapter = new EventAdapter(this.loadEvent());
         this.EventList.setAdapter(this.eventAdapter);
-
     }
 
     private ArrayList<Event> loadEvent() {
-
 
         return events;
     }
